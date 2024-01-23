@@ -28,6 +28,8 @@ public class ProduitServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
         String marque = req.getParameter("marque");
         String reference = req.getParameter("reference");
         Double prix = Double.valueOf(req.getParameter("prix"));
@@ -41,12 +43,12 @@ public class ProduitServlet extends HttpServlet {
         req.setAttribute("produits",produits);
         req.getRequestDispatcher("produits.jsp").forward(req,resp);
 
-
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        produits = prodServ.getAll();
         req.setAttribute("produits",produits);
         req.getRequestDispatcher("produits.jsp").forward(req,resp);
 

@@ -6,11 +6,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Tous les produits</h1>
+    <h1>Les produits</h1>
 
     <div class="container">
         <div class="row">
             <div class="col-8 ">
+                <h2>Liste des produits</h2>
     <table class="table table-dark">
         <thead>
         <tr>
@@ -20,6 +21,9 @@
             <th scope="col">Prix</th>
             <th scope="col">Date achat</th>
             <th scope="col">Stock</th>
+            <th scope="col">Détails</th>
+            <th scope="col">Remove</th>
+
         </tr>
         </thead>
         <tbody>
@@ -32,6 +36,12 @@
         <td>${produit.getPrix()}</td>
         <td>${produit.getDateAchat()}</td>
         <td>${produit.getStock()}</td>
+        <td>
+            <a href="rmproduit?action=detail&id=${produit.getId()}" class="btn btn-outline-info">Détails</a>
+        </td>
+        <td>
+            <a href="rmproduit?action=delete&id=${produit.getId()}" class="btn btn-outline-danger">X</a>
+        </td>
     </tr>
 
 </c:forEach>
@@ -41,6 +51,7 @@
 
             </div>
             <div class="col-4 ">
+                <h2>Ajout de produit</h2>
                 <form action="produits" method="post">
                     <div class="mb-3">
                         <label for="marque" class="form-label">Marque</label>

@@ -38,28 +38,48 @@ public class ProduitServlet extends HttpServlet {
 
         if (connection.equals("in connexion we trust")) {
             Long id = null;
+            String imgPath = null;
             try {
                id = Long.valueOf(req.getParameter("idPrdct"));
             } catch (Exception ignored) {
 
             }
-            String marque = req.getParameter("marque");
-            String reference = req.getParameter("reference");
-            Double prix = Double.valueOf(req.getParameter("prix"));
-            LocalDate date = LocalDate.parse(req.getParameter("date"));
-            int stock = Integer.parseInt(req.getParameter("stock"));
-            if (id == null) {
-                prodServ.create(marque,reference,date,prix,stock);
-            } else {
-                Produit prodToUpdt = prodServ.get(id);
-                prodToUpdt.setMarque(marque);
-                prodToUpdt.setReference(reference);
-                prodToUpdt.setPrix(prix);
-                prodToUpdt.setStock(stock);
-                prodToUpdt.setDateAchat(date);
-                prodServ.update(prodToUpdt);
+            try {
+                id = Long.valueOf((String) req.getAttribute("idPrdct"));
+                imgPath = req.getAttribute("pathimg").toString();
+            } catch (Exception ignored) {
+
             }
 
+            if (imgPath == null) {
+
+                String marque = req.getParameter("marque");
+                String reference = req.getParameter("reference");
+                Double prix = Double.valueOf(req.getParameter("prix"));
+                LocalDate date = LocalDate.parse(req.getParameter("date"));
+                int stock = Integer.parseInt(req.getParameter("stock"));
+
+                if (id == null) {
+
+                    prodServ.create(marque,reference,date,prix,stock);
+                } else {
+                    Produit prodToUpdt = prodServ.get(id);
+                    prodToUpdt.setMarque(marque);
+                    prodToUpdt.setReference(reference);
+                    prodToUpdt.setPrix(prix);
+                    prodToUpdt.setStock(stock);
+                    prodToUpdt.setDateAchat(date);
+                    if (imgPath != null) {
+                        prodToUpdt.setPathImg(imgPath);
+                    }
+                    prodServ.update(prodToUpdt);
+                }
+
+            } else {
+                Produit prodToUpdt = prodServ.get(id);
+                prodToUpdt.setPathImg(imgPath);
+                prodServ.update(prodToUpdt);
+            }
 
             doGet(req,resp);
         } else {

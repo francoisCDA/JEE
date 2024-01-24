@@ -26,6 +26,9 @@ public class Produit {
 
     private int stock;
 
+    @Column(name="path_img")
+    private String pathImg;
+
 //    @OneToMany(mappedBy = "produit", cascade = CascadeType.ALL)
 //    private List<Image> images;
 
@@ -88,6 +91,14 @@ public class Produit {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public String getPathImg() {
+        return pathImg;
+    }
+
+    public void setPathImg(String pathImg) {
+        this.pathImg = pathImg;
     }
 
     @Override

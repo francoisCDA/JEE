@@ -18,7 +18,7 @@
     </ul>
 
     <div>
-        <img src="images/${prod.getPathImg()}" />
+        <img src="images/${prod.getPathImg()}" class="img-rounded" />
     </div>
 
     <form action="upload" method="post" enctype="multipart/form-data">

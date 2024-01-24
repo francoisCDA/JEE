@@ -10,3 +10,11 @@ CREATE TABLE users (
 
 ALTER TABLE users ADD CONSTRAINT UNIQUE(pseudo);
 
+;
+
+ALTER TABLE produit ADD COLUMN pathImg VARCHAR(250) ;
+
+ALTER TABLE produit RENAME COLUMN pathImg to path_img;
+
+select * from produit;
+

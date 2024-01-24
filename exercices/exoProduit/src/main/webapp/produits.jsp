@@ -15,6 +15,7 @@
     <table class="table table-dark">
         <thead>
         <tr>
+            <th scope="col">Image</th>
             <th scope="col">ID</th>
             <th scope="col">Marque</th>
             <th scope="col">Référence</th>
@@ -30,6 +31,7 @@
 
 <c:forEach items="${produits}" var="produit">
     <tr>
+        <td><img src="images/${produit.getPathImg()}" class="img-thumbnail" /></td>
         <td>${produit.getId()}</td>
         <td>${produit.getMarque()}</td>
         <td>${produit.getReference()}</td>

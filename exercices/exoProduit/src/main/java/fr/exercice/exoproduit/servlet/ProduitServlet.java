@@ -37,7 +37,12 @@ public class ProduitServlet extends HttpServlet {
         String connection = (String) session.getAttribute("estConnu");
 
         if (connection.equals("in connexion we trust")) {
-            Long id = Long.valueOf(req.getParameter("idPrdct"));
+            Long id = null;
+            try {
+               id = Long.valueOf(req.getParameter("idPrdct"));
+            } catch (Exception ignored) {
+
+            }
             String marque = req.getParameter("marque");
             String reference = req.getParameter("reference");
             Double prix = Double.valueOf(req.getParameter("prix"));

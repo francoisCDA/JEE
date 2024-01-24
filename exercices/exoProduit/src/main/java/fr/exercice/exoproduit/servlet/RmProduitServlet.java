@@ -29,7 +29,7 @@ public class RmProduitServlet extends HttpServlet {
 
         if ((action.equals("delete"))) {
             prodServ.del(id);
-            resp.sendRedirect("/produits");
+            resp.sendRedirect("produits");
             //req.getRequestDispatcher("/produits").forward(req,resp);
         }
 

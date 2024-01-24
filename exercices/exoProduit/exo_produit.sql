@@ -7,3 +7,6 @@ CREATE TABLE users (
     pseudo VARCHAR(15),
     pswd VARCHAR(50)
 );
+
+ALTER TABLE users ADD CONSTRAINT UNIQUE(pseudo);
+

@@ -3,6 +3,7 @@ package fr.exercice.exoproduit.dao;
 import fr.exercice.exoproduit.models.User;
 import org.hibernate.Session;
 
+import org.hibernate.query.Query;
 import java.util.List;
 
 public class UsersDAO extends BaseDAO implements DAO<User> {
@@ -13,10 +14,10 @@ public class UsersDAO extends BaseDAO implements DAO<User> {
         Session session = factory.openSession();
         session.beginTransaction();
         try {
-            session.saveOrUpdate(obj);
+            session.save(obj);
             session.getTransaction().commit();
-        } catch (Exception ignored) {
-
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         } finally {
             session.close();
         }
@@ -25,6 +26,24 @@ public class UsersDAO extends BaseDAO implements DAO<User> {
     @Override
     public User get(Long id) {
         return null;
+    }
+
+    public User get(String pseudo, String passwd) {
+        Session session = factory.openSession();
+
+        try {
+           Query<User> query = session.createQuery("from User where pseudo = :pseud and pswd = :passwd ");
+           query.setParameter("pseud",pseudo);
+           query.setParameter("passwd",passwd);
+
+           return query.uniqueResult();
+
+        } catch (Exception e) {
+           return null;
+        } finally {
+            session.close();
+        }
+
     }
 
     @Override

@@ -29,7 +29,8 @@ public class RmProduitServlet extends HttpServlet {
 
         if ((action.equals("delete"))) {
             prodServ.del(id);
-            req.getRequestDispatcher("/produits").forward(req,resp);
+            resp.sendRedirect("/produits");
+            //req.getRequestDispatcher("/produits").forward(req,resp);
         }
 
         if ((action.equals("detail"))) {
@@ -38,6 +39,11 @@ public class RmProduitServlet extends HttpServlet {
             req.getRequestDispatcher("details.jsp").forward(req,resp);
         }
 
+        if ((action.equals("edit"))) {
+            Produit prod = prodServ.get(id);
+            req.setAttribute("prod",prod);
+            req.getRequestDispatcher("new-produits.jsp").forward(req,resp);
+        }
 
 
     }

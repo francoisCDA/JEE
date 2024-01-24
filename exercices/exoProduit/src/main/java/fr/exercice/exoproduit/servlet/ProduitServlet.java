@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -19,6 +20,8 @@ public class ProduitServlet extends HttpServlet {
 
     private ProduitService prodServ;
 
+    private HttpSession session;
+
 
     @Override
     public void init() throws ServletException {
@@ -29,20 +32,34 @@ public class ProduitServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        session = req.getSession();
 
-        String marque = req.getParameter("marque");
-        String reference = req.getParameter("reference");
-        Double prix = Double.valueOf(req.getParameter("prix"));
-        LocalDate date = LocalDate.parse(req.getParameter("date"));
-        Integer stock = Integer.parseInt(req.getParameter("stock"));
+        String connection = (String) session.getAttribute("estConnu");
 
-        prodServ.create(marque,reference,date,prix,stock);
+        if (connection.equals("in connexion we trust")) {
+            Long id = Long.valueOf(req.getParameter("idPrdct"));
+            String marque = req.getParameter("marque");
+            String reference = req.getParameter("reference");
+            Double prix = Double.valueOf(req.getParameter("prix"));
+            LocalDate date = LocalDate.parse(req.getParameter("date"));
+            int stock = Integer.parseInt(req.getParameter("stock"));
+            if (id == null) {
+                prodServ.create(marque,reference,date,prix,stock);
+            } else {
+                Produit prodToUpdt = prodServ.get(id);
+                prodToUpdt.setMarque(marque);
+                prodToUpdt.setReference(reference);
+                prodToUpdt.setPrix(prix);
+                prodToUpdt.setStock(stock);
+                prodToUpdt.setDateAchat(date);
+                prodServ.update(prodToUpdt);
+            }
 
-        produits = prodServ.getAll();
 
-        req.setAttribute("produits",produits);
-        req.getRequestDispatcher("produits.jsp").forward(req,resp);
-
+            doGet(req,resp);
+        } else {
+            resp.sendRedirect("identification-error.jsp");
+        }
     }
 
     @Override
@@ -53,6 +70,7 @@ public class ProduitServlet extends HttpServlet {
         req.getRequestDispatcher("produits.jsp").forward(req,resp);
 
     }
+
 
 
 }

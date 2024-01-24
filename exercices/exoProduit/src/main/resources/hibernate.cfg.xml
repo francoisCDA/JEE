@@ -8,7 +8,7 @@
     <!-- a SessionFactory instance listed as /jndi/name -->
     <session-factory>
         <mapping class="fr.exercice.exoproduit.models.Produit"/>
-<!--        <mapping class="models.Image"/>-->
+        <mapping class="fr.exercice.exoproduit.models.User"/>
 <!--        <mapping class="models.Commentaire"/>-->
 <!--        <mapping class="models.Commande"/>-->
 <!--        <mapping class="models.Adresse"/>-->

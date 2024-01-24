@@ -22,8 +22,8 @@
             <th scope="col">Date achat</th>
             <th scope="col">Stock</th>
             <th scope="col">Détails</th>
+            <th scope="col">Edit</th>
             <th scope="col">Remove</th>
-
         </tr>
         </thead>
         <tbody>
@@ -38,6 +38,9 @@
         <td>${produit.getStock()}</td>
         <td>
             <a href="rmproduit?action=detail&id=${produit.getId()}" class="btn btn-outline-info">Détails</a>
+        </td>
+        <td>
+            <a href="rmproduit?action=edit&id=${produit.getId()}" class="btn btn-outline-warning">Update</a>
         </td>
         <td>
             <a href="rmproduit?action=delete&id=${produit.getId()}" class="btn btn-outline-danger">X</a>

@@ -11,25 +11,25 @@
 <form action="produits" method="post">
     <div class="mb-3">
         <label for="marque" class="form-label">Marque</label>
-        <input type="text" class="form-control" id="marque" name="marque">
+        <input type="text" class="form-control" id="marque" name="marque" value="${prod.getMarque()}">
     </div>
     <div class="mb-3">
         <label for="reference" class="form-label">Reference</label>
-        <input type="text" class="form-control" id="reference" name="reference">
+        <input type="text" class="form-control" id="reference" name="reference" value="${prod.getReference()}">
     </div>
     <div class="mb-3">
         <label for="prix" class="form-label">Prix</label>
-        <input type="number" class="form-control" id="prix" name="prix">
+        <input type="number" class="form-control" id="prix" name="prix" value="${prod.getPrix()}" >
     </div>
     <div class="mb-3">
         <label for="date" class="form-label">Date d'achat</label>
-        <input type="date" class="form-control" id="date" name="date">
+        <input type="date" class="form-control" id="date" name="date" value="${prod.getDateAchat()}">
     </div>
     <div class="mb-3">
         <label for="stock" class="form-label">Stock</label>
-        <input type="number" class="form-control" id="stock" name="stock">
+        <input type="number" class="form-control" id="stock" name="stock" value="${prod.getStock()}">
     </div>
-    <button type="submit" class="btn btn-primary">Ajouter</button>
+    <button type="submit" class="btn btn-primary" name="idPrdct" value="${prod.getId()}" >Update</button>
 </form>
 
 

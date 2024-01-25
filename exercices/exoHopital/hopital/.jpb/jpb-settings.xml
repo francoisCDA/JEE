@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DatabaseMigrationSettings" lastSelectedDirectory="src\main\resources\db\migration" />
+  <component name="PersistenceUnitSettings">
+    <persistence-units>
+      <persistence-unit name="Default" defaultSearchScope="Selected Entities">
+        <entities>
+          <entity value="fr.exercice.hopital.entities.Consultation" />
+          <entity value="fr.exercice.hopital.entities.Patient" />
+          <entity value="fr.exercice.hopital.entities.Admin" />
+          <entity value="fr.exercice.hopital.entities.FicheSoin" />
+          <entity value="fr.exercice.hopital.entities.Prescription" />
+        </entities>
+      </persistence-unit>
+    </persistence-units>
+  </component>
+</project>

@@ -14,12 +14,8 @@ public class PatientService {
         patientDAO = new PatientDAO();
     }
 
-    public void newPatient(String nom, String prenom, LocalDate naissance) {
-        Patient patient = new Patient();
-        patient.setNom(nom);
-        patient.setPrenom(prenom);
-        patient.setNaissance(naissance);
-
+    public void newPatient(String nom, String prenom, LocalDate naissance, byte[] photo) {
+        Patient patient = new Patient(nom,prenom,naissance,photo);
         patientDAO.create(patient);
 
     }

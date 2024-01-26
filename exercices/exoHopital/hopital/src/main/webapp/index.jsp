@@ -9,9 +9,9 @@
 <jsp:include page="includes/header.jsp"/>
 <h1 class="align-self-center"><%= "Hello'spital" %></h1>
 
-<p>Service de gestion des consultations</p>
+<p>Service de gestion de consultations</p>
 
-<a href class="btn btn-primary">Continuer</a>
+<a href="patients" class="btn btn-primary">Continuer</a>
 
 
 

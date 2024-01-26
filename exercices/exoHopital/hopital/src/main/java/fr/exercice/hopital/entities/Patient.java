@@ -2,6 +2,7 @@ package fr.exercice.hopital.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,6 +25,17 @@ public class Patient {
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Consultation> consultationList;
+
+    public Patient() {
+        consultationList = new ArrayList<>();
+    }
+
+    public Patient(String nom, String prenom,LocalDate naissance, byte[] photo ) {
+        this.prenom = prenom;
+        this.nom = nom;
+        this.naissance = naissance;
+        this.photo = photo;
+    }
 
 
     public Long getId() {

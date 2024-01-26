@@ -3,17 +3,16 @@
 <html>
 <head>
     <title>Les patients</title>
-    <jsp:include page="../includes/head.jsp" />
+    <jsp:include page="../../includes/head.jsp" />
 </head>
 <body>
-<jsp:include page="../includes/header.jsp"/>
+<jsp:include page="../../includes/header.jsp"/>
 <h1>Liste des patients</h1>
 
 <div class="container">
     <div class="row">
         <div class="col-8 ">
-            <h2>Liste des produits</h2>
-            <table class="table table-dark">
+           <table class="table table-dark">
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -24,9 +23,8 @@
                 </tr>
                 </thead>
                 <tbody>
-
                     <c:choose>
-                        <c:when test="${patients!=null}">
+                        <c:when test="${not empty patients}">
                             <c:forEach items="${patients}" var="pat">
                             <tr>
                                 <td>${pat.getId()}</td>

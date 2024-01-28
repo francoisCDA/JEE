@@ -1,7 +1,7 @@
 package fr.exercice.hopital.dao;
 
 
-import fr.exercice.hopital.service.SessionFactoryService;
+import fr.exercice.hopital.util.SessionFactoryService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -16,7 +16,7 @@ public abstract class BaseDAO {
 
     public BaseDAO() {
         factory = SessionFactoryService.get();
-        lazysession = factory.openSession();
+        lazysession = SessionFactoryService.getLazySession();
     }
 
 

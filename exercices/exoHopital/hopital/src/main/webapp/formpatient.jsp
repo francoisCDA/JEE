@@ -3,10 +3,10 @@
 <html>
 <head>
     <title>Title</title>
-    <jsp:include page="../../includes/head.jsp" />
+    <jsp:include page="includes/head.jsp" />
 </head>
 <body>
-<jsp:include page="../../includes/header.jsp"/>
+<jsp:include page="includes/header.jsp"/>
 <h1>Inscription nouveau patient</h1>
 
 <div>

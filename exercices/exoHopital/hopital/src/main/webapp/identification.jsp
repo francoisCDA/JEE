@@ -3,15 +3,15 @@
 <html>
 <head>
     <title>Identification</title>
-    <jsp:include page="../../includes/head.jsp" />
+    <jsp:include page="includes/head.jsp" />
 </head>
 <body>
-<jsp:include page="../../includes/header.jsp"/>
+<jsp:include page="includes/header.jsp"/>
 
 <h1>Qui êtes vous ?</h1>
 
 <div>
-    <form action="checkadmin" method="post">
+    <form action="addpatient" method="post">
         <div class="mb-3">
             <label for="login" class="form-label">Login</label>
             <input type="text" class="form-control" id="login" name="login">

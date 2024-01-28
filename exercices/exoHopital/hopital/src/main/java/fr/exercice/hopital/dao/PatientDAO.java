@@ -36,12 +36,15 @@ public class PatientDAO extends BaseDAO implements DAO<Patient> {
 
     @Override
     public List<Patient> getAll() {
+        session = factory.openSession();
         try {
-            Query<Patient> patientQuery = lazysession.createQuery("from Patient");
+            Query<Patient> patientQuery = session.createQuery("from Patient");
             List<Patient> ret = patientQuery.list();
             return ret;
         } catch (Exception ignored) {
             return null;
+        } finally {
+            session.close();
         }
     }
 

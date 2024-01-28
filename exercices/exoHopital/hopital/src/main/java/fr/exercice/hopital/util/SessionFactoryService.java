@@ -1,5 +1,6 @@
-package fr.exercice.hopital.service;
+package fr.exercice.hopital.util;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -12,6 +13,8 @@ public class SessionFactoryService {
     private SessionFactory sessionFactory;
 
     private static SessionFactoryService instance;
+
+    private static Session lazySession;
 
 
     private SessionFactoryService(){
@@ -26,7 +29,15 @@ public class SessionFactoryService {
         return instance.sessionFactory;
     }
 
+    public static Session getLazySession(){
+        if (lazySession == null) {
+            lazySession = get().openSession();
+        }
+        return lazySession;
+    }
+
     public static void close() {
+        lazySession.close();
         instance.sessionFactory.close();
         instance = null;
     }

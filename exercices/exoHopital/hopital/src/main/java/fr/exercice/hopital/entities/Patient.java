@@ -21,6 +21,7 @@ public class Patient {
 
     @Lob
     @Basic(fetch = FetchType.LAZY)
+    @Column(length = 10000000)
     private byte[] photo;
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)

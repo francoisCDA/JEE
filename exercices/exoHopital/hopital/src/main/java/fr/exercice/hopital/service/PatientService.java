@@ -20,6 +20,8 @@ public class PatientService {
 
     }
 
+    public Patient get(Long id) { return patientDAO.get(id);}
+
     public List<Patient> getAll() {
         return patientDAO.getAll();
     }

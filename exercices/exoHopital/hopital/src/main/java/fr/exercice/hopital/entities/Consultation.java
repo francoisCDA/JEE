@@ -2,6 +2,7 @@ package fr.exercice.hopital.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,6 +31,10 @@ public class Consultation {
         return patient;
     }
 
+    public Consultation(){
+        fichesSoins = new ArrayList<>();
+        prescriptions = new ArrayList<>();
+    }
 
 
     public Long getIdConsult() {

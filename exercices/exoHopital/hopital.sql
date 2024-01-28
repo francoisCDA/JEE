@@ -2,7 +2,9 @@
 TP hopital
 **********************************/
 
-CREATE DATABASE hopital;
+DROP DATABASE IF EXISTS hopital;
+
+CREATE DATABASE IF NOT EXISTS hopital;
 
 use hopital;
 
@@ -12,8 +14,8 @@ use hopital;
 CREATE TABLE `Admin`
 (
     id_admin    BIGINT AUTO_INCREMENT NOT NULL,
-    identifiant VARCHAR(255) NULL,
-    motDePasse  VARCHAR(255) NULL,
+    identifiant VARCHAR(255) NOT NULL UNIQUE,
+    motDePasse  VARCHAR(255) NOT NULL,
     CONSTRAINT pk_admin PRIMARY KEY (id_admin)
 );
 
@@ -41,7 +43,7 @@ CREATE TABLE Patient
     nom        VARCHAR(255) NULL,
     prenom     VARCHAR(255) NULL,
     naissance  date NULL,
-    photo      BLOB NULL,
+    photo      LONGBLOB NULL,
     CONSTRAINT pk_patient PRIMARY KEY (id_patient)
 );
 
@@ -67,9 +69,14 @@ ALTER TABLE Prescription
 	commande
 *****************************/
 
+use hopital;
+
 -- creation d'un admin
 
- 
-
 insert into admin (identifiant, motDePasse) values ("DrMad","mesdoc");
+select * from admin;
+
+-- list patients
+
+select * from Patient;
 

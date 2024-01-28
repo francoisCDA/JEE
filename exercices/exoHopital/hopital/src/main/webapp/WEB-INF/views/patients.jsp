@@ -9,7 +9,7 @@
 <jsp:include page="../../includes/header.jsp"/>
 <h1>Liste des patients</h1>
 
-<div class="container">
+<div class="container align-self-center">
     <div class="row">
         <div class="col-8 ">
            <table class="table table-dark">
@@ -19,7 +19,7 @@
                     <th scope="col">Nom</th>
                     <th scope="col">Prenom</th>
                     <th scope="col">Date de naissance</th>
-                    <th scope="col">Dossier médical</th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -32,7 +32,7 @@
                                 <td>${pat.getPrenom()}</td>
                                 <td>${pat.getNaissance()}</td>
                                 <td>
-                                    <a class="btn btn-info" href="dossier?${pat.getId()}" >-></a>
+                                    <a class="btn btn-info" href="dossier?id=${pat.getId()}" >Dossier médical</a>
                                 </td>
                             </tr>
                             </c:forEach>

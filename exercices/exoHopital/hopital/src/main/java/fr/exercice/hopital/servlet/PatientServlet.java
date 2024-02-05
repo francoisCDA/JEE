@@ -52,7 +52,6 @@ public class PatientServlet extends HttpServlet {
         } catch (Exception ex) {
             throw new ServletException(ex);
         }
-
     }
 
 

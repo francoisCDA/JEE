@@ -60,7 +60,6 @@
                 </tbody>
             </table>
 
-
             <form action="insert" method="post" class="border border-primary rounded p-3 ">
                 <div class="form-row mb-4">
                     <div class="col-12">
@@ -73,11 +72,7 @@
                     </div>
 
                         <button type="submit" class="btn btn-primary">Ajouter</button>
-
-
-
                 </div>
-
             </form>
         </div>
     </div>

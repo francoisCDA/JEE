@@ -32,15 +32,21 @@ public class SessionFactoryService {
     public static Session getLazySession(){
         if (lazySession == null) {
             lazySession = get().openSession();
+        } else {
+            lazySession.close();
         }
+        lazySession = get().openSession();
         return lazySession;
     }
+
 
     public static void close() {
         lazySession.close();
         instance.sessionFactory.close();
         instance = null;
     }
+
+
 
 
 }

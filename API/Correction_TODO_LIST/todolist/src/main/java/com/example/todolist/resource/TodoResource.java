@@ -37,9 +37,8 @@ public class TodoResource {
 
     @PATCH
     @Path("{id}")
-    public TodoDto pathStatus(@PathParam("id") int id) {
-
-        return todoService.updateTodo(id);
+    public String patchStatus(@PathParam("id") int id) {
+        return todoService.updateTodo(id).toString();
     }
 
     @DELETE
